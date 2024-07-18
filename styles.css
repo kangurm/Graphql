@@ -1,0 +1,70 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    background-color: gray;
+}
+
+/* LOGIN PAGE CSS START */
+/* LOGIN PAGE CSS START */
+/* LOGIN PAGE CSS START */
+
+.loginContainer {
+    background-color: darkgray;
+    width: 500px;
+    height: 250px;
+    padding: 15px;
+    margin-top: 10%;
+    border-radius: 8%;
+
+}
+
+#loginContents {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    text-align: center;
+    border-radius: 8%;
+}
+
+#username {
+    width: 80%;
+    height: 15%;
+}
+
+#password {
+    width: 80%;
+    height: 15%;
+}
+
+#submit {
+    width: 15%;
+    height: 15%;
+    border-radius: 15%;
+    /* height: 4em; Uncomment if desired */
+}
+
+.title {
+    font-size: 2rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.titleGuide {
+    font-size: 1rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-style: oblique;
+    color: rgba(0, 0, 0, 0.349);
+}
+
+/* LOGIN PAGE CSS END */
+/* LOGIN PAGE CSS END */
+/* LOGIN PAGE CSS END */
+
