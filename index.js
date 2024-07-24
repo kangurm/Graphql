@@ -1,38 +1,14 @@
 import * as utils from './utils.js';
+import * as query from './queries.js';
+import * as render from './render.js';
 
-// Event listener for login submit button
-document.getElementById("loginContents").addEventListener("submit", function(event) {
-    event.preventDefault();
-    let username = document.getElementById("username").value;
-    let password = document.getElementById("password").value;
-    if (username.length >= 1 && password.length >= 1) {
-        fetchSignin(username, password)
+function InitWithToken() {
+    const JWT_token = sessionStorage.getItem("JWT");
+    if (JWT_token) {
+        render.renderHomepage();
     } else {
-        // TODO: Display error
+        render.renderLoginpage();
     }
-});
-
-
-function fetchSignin(username, password) {
-    fetch('https://01.kood.tech/api/auth/signin', {
-        method: 'POST',
-        headers: {
-            Authorization: 'Basic ' + btoa(`${username}:${password}`),
-            "Content-Type": 'application/json',
-            "Content-Encoding": 'base64',
-        },
-    })
-    .then(response => response.json())
-    .then(data => {
-        sessionStorage.setItem("JWT", data);
-        if (utils.validateToken) {
-            console.log("Token valid")
-        } else {
-            console.error("Token invalid")
-        }
-
-    })
-    .catch((error) => {
-        console.error('Error:', error);
-    });
 }
+
+document.addEventListener("DOMContentLoaded", InitWithToken);
