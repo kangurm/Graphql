@@ -1,4 +1,3 @@
-import * as render from './render.js';
 
 export function getTokenFromStorage() {
     const JWT_token = sessionStorage.getItem("JWT");
@@ -40,13 +39,15 @@ export function fetchSignin(username, password) {
         sessionStorage.setItem("JWT", data);
         const JWT_token = getTokenFromStorage();
         if (JWT_token) {
-            render.renderHomepage();
+            return true;
         } else {
             console.error("Token invalid")
+            return false;
         }
 
     })
     .catch((error) => {
         console.error('Error:', error);
+        return false;
     });
 }

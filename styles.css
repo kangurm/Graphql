@@ -13,7 +13,7 @@ body, html {
 /* LOGIN PAGE CSS START */
 /* LOGIN PAGE CSS START */
 
-.loginContainer {
+.login_container {
     background-color: darkgray;
     width: 500px;
     height: 250px;
@@ -23,7 +23,7 @@ body, html {
 
 }
 
-#loginContents {
+#login_contents {
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -57,7 +57,7 @@ body, html {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.titleGuide {
+.title_guide {
     font-size: 1rem;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-style: oblique;
@@ -68,3 +68,25 @@ body, html {
 /* LOGIN PAGE CSS END */
 /* LOGIN PAGE CSS END */
 
+/* HOME PAGE CSS START */
+/* HOME PAGE CSS START */
+/* HOME PAGE CSS START */
+
+.user_info {
+    display: flex;
+    flex-direction: row;
+    gap: 5vw;
+    font-size: 2rem;
+
+}
+
+.logout {
+    background-color: lightcoral;
+    border-radius: 15%;
+    cursor: pointer;
+    padding: 10px;
+}
+
+/* HOME PAGE CSS END */
+/* HOME PAGE CSS END */
+/* HOME PAGE CSS END */

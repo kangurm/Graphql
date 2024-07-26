@@ -1,8 +1,9 @@
 export const userQuery = 
 `
 {
-  user_public_view {
-    id
+  user {
+    firstName
+    lastName
   }
 }
 `
