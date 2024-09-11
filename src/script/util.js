@@ -4,50 +4,49 @@ export function getTokenFromStorage() {
     return JWT_token ? JWT_token : undefined
 }
 
+export function clearContent() {
+    document.getElementById("root").innerHTML = '';
+}
+
+export function logout() {
+    sessionStorage.removeItem("JWT");
+    clearContent();
+}
+
+
 export async function fetchData(new_query, JWT_token) {
-    try {
-        const response = await fetch ("https://01.kood.tech/api/graphql-engine/v1/graphql",
+    return fetch("https://01.kood.tech/api/graphql-engine/v1/graphql",
         {
             method: "POST",
             headers: {
                 Authorization: "Bearer " + JWT_token,
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify({query: new_query}),
-        });
-        if (response.ok) {
-            const data = await response.json();
-            console.log("Data: ", data)
-            return data;
-        }
-    } catch (error) {
-        console.error(error);
-    }
+            body: JSON.stringify({ query: new_query }),
+        })
+        .then(response => response.json())
+        .catch(error => console.error(error));
 }
 
-export function fetchSignin(username, password) {
-    fetch('https://01.kood.tech/api/auth/signin', {
-        method: 'POST',
-        headers: {
-            Authorization: 'Basic ' + btoa(`${username}:${password}`),
-            "Content-Type": 'application/json',
-            "Content-Encoding": 'base64',
-        },
-    })
-    .then(response => response.json())
-    .then(data => {
-        sessionStorage.setItem("JWT", data);
-        const JWT_token = getTokenFromStorage();
-        if (JWT_token) {
+export async function fetchSignin(username, password) {
+    try {
+        const response = await fetch('https://01.kood.tech/api/auth/signin', {
+            method: 'POST',
+            headers: {
+                Authorization: 'Basic ' + btoa(`${username}:${password}`),
+                "Content-Type": 'application/json',
+                "Content-Encoding": 'base64',
+            },
+        });
+        const data = await response.json();
+        if (response.ok) {
+            sessionStorage.setItem("JWT", data);
             return true;
         } else {
-            console.error("Token invalid")
             return false;
         }
-
-    })
-    .catch((error) => {
+    } catch (error) {
         console.error('Error:', error);
         return false;
-    });
+    }
 }
