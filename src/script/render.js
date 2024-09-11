@@ -60,7 +60,8 @@ export async function Loginpage() {
                 Homepage();
             } else {
                 console.log("Login unsuccessful", result);
-                sessionStorage.removeItem("JWT");
+                // Removing JWT just in case there is an invalid value
+                // sessionStorage.removeItem("JWT");
             }
         } else {
             console.log("Invalid amount of characters")
