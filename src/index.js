@@ -1,5 +1,3 @@
-import * as util from './script/util.js';
-import * as query from './script/query.js';
 import * as render from './script/render.js';
 
 // Initializes the app, when the player has an auth token saved in browser session he will be logged in immediately.

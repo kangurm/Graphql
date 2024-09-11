@@ -2,6 +2,8 @@
 
 # Running the app on a local machine
 
+For the following methods make sure you are in the root folder: <b>~/graphql/</b>
+
 ## Method 1: Using Python
 ```bash
 python3 -m http.server &
