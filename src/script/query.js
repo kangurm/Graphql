@@ -1,4 +1,4 @@
-export const userQuery = 
+export const userQuery =
 `
 {
   user {
@@ -8,7 +8,7 @@ export const userQuery =
 }
 `
 
-export const myQuery = 
+export const myQuery =
 `
 {
   object(where: { id: { _eq: 9041 }}) {
