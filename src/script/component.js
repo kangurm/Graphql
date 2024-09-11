@@ -2,10 +2,8 @@ export const UserInfo = (props) => {
     return (
         `
         <div class="user_info">
-            <span class="welcome_message">Welcome,
                 <span class="welcome_name">${props.firstName} ${props.lastName}</span>
-            </span>
-            <div id="logout">Logout</div>
+            <button id="logout">Logout</div>
         </div>
         `
     )
@@ -30,8 +28,8 @@ export const LoginContainer = () => {
 export const TabButton = (props) => {
     return (
         `
-        <div class="tab_button">
-            <button>${props.name}</button>
+        <div>
+            <button class="tab_button">${props.name}</button>
         </div>
         `
     )

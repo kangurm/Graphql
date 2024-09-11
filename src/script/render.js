@@ -16,10 +16,16 @@ export async function Homepage() {
 
     console.log("user: ", user)
     let header = e.Header();
-    let template = e.UserInfo({firstName, lastName});
+    let userinfo = e.UserInfo({firstName, lastName});
+    let overallXPButton = e.TabButton({name: "Overall XP"});
+    let projectsButton = e.TabButton({name: "My Projects"});
+    let auditsButton = e.TabButton({name: "Audits"});
 
     document.getElementById("root").insertAdjacentHTML("afterbegin", header);
-    document.getElementById("header").insertAdjacentHTML("beforeend", template);
+    document.getElementById("header").insertAdjacentHTML("beforeend", overallXPButton);
+    document.getElementById("header").insertAdjacentHTML("beforeend", projectsButton);
+    document.getElementById("header").insertAdjacentHTML("beforeend", auditsButton);
+    document.getElementById("header").insertAdjacentHTML("beforeend", userinfo);
 
     // document.getElementById("root").insertAdjacentHTML("afterbegin", template);
 
