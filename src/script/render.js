@@ -2,8 +2,8 @@ import * as query from './query.js';
 import * as util from './util.js';
 
 export async function Homepage() {
-    const JWT_token = utils.getTokenFromStorage();
-    const userInfo = await utils.fetchData(query.myQuery, JWT_token)
+    const JWT_token = util.getTokenFromStorage();
+    const userInfo = await util.fetchData(query.myQuery, JWT_token)
 
     console.log("Userinfo: ", userInfo)
 
@@ -30,7 +30,7 @@ export async function Loginpage() {
         let username = document.getElementById("username").value;
         let password = document.getElementById("password").value;
         if (username.length >= 1 && password.length >= 1) {
-            utils.fetchSignin(username, password);
+            util.fetchSignin(username, password);
         } else {
             // TODO: Display error
         }
