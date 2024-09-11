@@ -41,7 +41,7 @@ export const Header = () => {
     return (
         `
         <header id="header">
-            <h1 class="title">Graphql 📈📉</h1>
+            <h1 class="header_title">Graphql 📈📉</h1>
         </header>
         `
     )
