@@ -2,6 +2,8 @@ import * as query from './query.js';
 import * as e from './component.js';
 import * as util from './util.js';
 
+
+
 export async function Homepage() {
     const JWT_token = util.getTokenFromStorage();
     const user =  await util.fetchData(query.userQuery, JWT_token);

@@ -29,7 +29,7 @@ export const TabButton = (props) => {
     return (
         `
         <div>
-            <button class="tab_button">${props.name}</button>
+            <button class="tab_button" id="${props.name}" onclick="changeTab('${props.name}')">${props.name}</button>
         </div>
         `
     )

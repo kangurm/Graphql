@@ -10,4 +10,8 @@ function InitWithToken() {
     }
 }
 
+window.changeTab = (name) => {
+    console.log("tab changed", name)
+}
+
 document.addEventListener("DOMContentLoaded", InitWithToken);
