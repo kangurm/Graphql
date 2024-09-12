@@ -28,9 +28,7 @@ export const LoginContainer = () => {
 export const TabButton = (props) => {
     return (
         `
-        <div>
-            <button class="tab_button" id="${props.name}" onclick="changeTab('${props.name}')">${props.name}</button>
-        </div>
+        <button class="tab_button" id="${props.name}" onclick="changeTab(event,'${props.name}')">${props.name}</button>
         `
     )
 };
@@ -39,7 +37,7 @@ export const Header = () => {
     return (
         `
         <header id="header">
-            <h1 class="header_title">Graphql 📈📉</h1>
+            <h1 id="home" class="header_title">Graphql 📈📉</h1>
         </header>
         `
     )

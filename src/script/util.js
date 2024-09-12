@@ -8,6 +8,14 @@ export function clearContent() {
     document.getElementById("root").innerHTML = '';
 }
 
+export function setActiveTab(event) {
+    let buttons = document.getElementsByClassName("tab_button");
+    for (let i = 0; i < buttons.length; i++) {
+        buttons[i].classList.remove("active");
+    }
+    event.target.classList.add("active");
+}
+
 export function logout() {
     sessionStorage.removeItem("JWT");
     clearContent();

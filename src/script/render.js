@@ -31,11 +31,17 @@ export async function Homepage() {
 
     // document.getElementById("root").insertAdjacentHTML("afterbegin", template);
 
+    document.getElementById("home").addEventListener("click", function () {
+        util.clearContent();
+        Homepage();
+    });
+
     document.getElementById("logout").addEventListener("click", function () {
         util.logout();
         Loginpage();
     })
 }
+
 
 export async function Loginpage() {
     let template = e.LoginContainer();
@@ -63,4 +69,19 @@ export async function Loginpage() {
             // TODO: Display error
         }
     });
+}
+
+export function OverallXp() {
+    console.log('rendering overall xp')
+
+}
+
+export function MyProjects() {
+    console.log('rendering my projects')
+
+}
+
+export function Audits() {
+    console.log('rendering audits')
+
 }
