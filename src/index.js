@@ -1,7 +1,8 @@
 import * as render from './script/render.js';
-import { clearContent, setActiveTab } from './script/util.js';
+import { clearFromRoot, setActiveTab } from './script/util.js';
 
-// Initializes the app, when the player has an auth token saved in browser session he will be logged in immediately.
+/* Initializes the app, when the player has an auth token saved in their browser session and will
+be logged in immediately. */
 function InitWithToken() {
     const JWT_token = sessionStorage.getItem("JWT");
     if (JWT_token) {
@@ -13,6 +14,7 @@ function InitWithToken() {
 
 window.changeTab = (event, name) => {
     setActiveTab(event.target);
+    // TODO: clear all graph containers and stats containers
     switch (name) {
         case "Overall XP":
             render.OverallXp();

@@ -14,7 +14,7 @@ export async function Homepage() {
     if (user.error === undefined) {
         firstName = user.data.user[0].firstName;
         lastName = user.data.user[0].lastName;
-    }
+    } // Possibly add an else statement here to remove JWT if its unvalid and call InitWithToken() again?
 
     MakeHeader(firstName, lastName);
 
@@ -35,7 +35,7 @@ export async function Homepage() {
 
 
     document.getElementById("home").addEventListener("click", function () {
-        util.clearContent();
+        util.clearFromRoot();
         Homepage();
     });
 
@@ -60,7 +60,7 @@ export async function Loginpage() {
             let result;
             if (result = await util.fetchSignin(username, password)) {
                 console.log("Login successful", result)
-                util.clearContent();
+                util.clearFromRoot();
                 Homepage();
             } else {
                 console.log("Login unsuccessful", result);
@@ -88,7 +88,7 @@ function MakeHeader(firstName, lastName) {
     document.getElementById("header").insertAdjacentHTML("beforeend", auditsButton);
     document.getElementById("header").insertAdjacentHTML("beforeend", userinfo);
 
-    // Make my projects active by default
+    // Make "My Projects" active by default when Homepage() is called
     document.getElementById("My Projects").classList.add("active");
 }
 

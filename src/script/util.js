@@ -4,7 +4,7 @@ export function getTokenFromStorage() {
     return JWT_token ? JWT_token : undefined
 }
 
-export function clearContent() {
+export function clearFromRoot() {
     document.getElementById("root").innerHTML = '';
 }
 
@@ -18,7 +18,7 @@ export function setActiveTab(target) {
 
 export function logout() {
     sessionStorage.removeItem("JWT");
-    clearContent();
+    clearFromRoot();
 }
 
 
