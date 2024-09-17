@@ -101,7 +101,7 @@ html {
 
 /* HEADER CSS START */
 header {
-    width: 100%;
+    /* width: 100%; */
     height: 100px;
     background-color: #DECBB7;
     color: #433633;
@@ -169,25 +169,30 @@ header {
 
 /* MAIN PAGE CSS START */
 
-@media screen and (max-width: 600px) {
-
-    #main_container {
-        flex-direction: column;
-        align-items: center;
-    }
-}
 
 #main_container {
     padding: 0;
     margin: 0;
     width: 100%;
-    height: 100%;
     display: flex;
     flex-direction: row;
 }
 
 .graph_container {
     width: 50vw;
+    height: 70vh;
+    margin: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: #DECBB7;
+    border: 2px solid #8f857d;
+    border-radius: 25px;
+}
+
+.stats_container {
+    width: 25vw;
     height: 70vh;
     margin: 20px;
     display: flex;

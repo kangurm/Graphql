@@ -23,9 +23,14 @@ export async function Homepage() {
     document.getElementById("root").insertAdjacentHTML("beforeend", mainContainer);
 
     let graphContainer1 = e.GraphContainer();
+    let StatsContainer1 = e.StatsContainer();
+    let StatsContainer2 = e.StatsContainer();
+
 
 
     document.getElementById("main_container").insertAdjacentHTML("beforeend", graphContainer1);
+    document.getElementById("main_container").insertAdjacentHTML("beforeend", StatsContainer1);
+    document.getElementById("main_container").insertAdjacentHTML("beforeend", StatsContainer2);
 
 
 
