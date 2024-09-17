@@ -68,9 +68,15 @@ html {
     height: 15%;
     border-radius: 15px;
     border: 2px solid #8f857d;
+    padding: 10px;
 
     color: #433633;
     /* height: 4em; Uncomment if desired */
+}
+
+#error {
+    color: red;
+    display: none;
 }
 
 #submit:hover {

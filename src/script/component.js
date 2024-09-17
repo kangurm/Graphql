@@ -18,6 +18,7 @@ export const LoginContainer = () => {
                 <h2 class="title_guide">Sign in to your intra account</h2>
                 <input type="text" name="username" id="username" placeholder="Username/Email" required>
                 <input type="password" name="password" id="password" placeholder="Password" required>
+                <div id="error"></div>
                 <input type="submit" value="Login" id="submit">
             </div>
         </div>

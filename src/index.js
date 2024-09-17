@@ -12,7 +12,7 @@ function InitWithToken() {
 }
 
 window.changeTab = (event, name) => {
-    setActiveTab(event);
+    setActiveTab(event.target);
     switch (name) {
         case "Overall XP":
             render.OverallXp();
@@ -25,7 +25,6 @@ window.changeTab = (event, name) => {
             break;
         default:
             render.Homepage();
-            setActiveTab();
     }
 }
 

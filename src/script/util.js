@@ -8,12 +8,12 @@ export function clearContent() {
     document.getElementById("root").innerHTML = '';
 }
 
-export function setActiveTab(event) {
+export function setActiveTab(target) {
     let buttons = document.getElementsByClassName("tab_button");
     for (let i = 0; i < buttons.length; i++) {
         buttons[i].classList.remove("active");
     }
-    event.target.classList.add("active");
+    target.classList.add("active");
 }
 
 export function logout() {
@@ -56,5 +56,24 @@ export async function fetchSignin(username, password) {
     } catch (error) {
         console.error('Error:', error);
         return false;
+    }
+}
+
+export function showError(message) {
+    let errorElement = document.getElementById("error");
+    errorElement.textContent = message;
+    if (errorElement.style.display !== "block") {
+        errorElement.style.display = "block";
+        errorElement.style.opacity = 1;
+        setTimeout(() => {
+            let fadeOut = setInterval(() => {
+                if (errorElement.style.opacity <= 0) {
+                    clearInterval(fadeOut);
+                    errorElement.style.display = "none";
+                } else {
+                    errorElement.style.opacity -= 0.1;
+                }
+            }, 50);
+        }, 2000);
     }
 }

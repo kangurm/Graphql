@@ -64,12 +64,12 @@ export async function Loginpage() {
                 Homepage();
             } else {
                 console.log("Login unsuccessful", result);
-                // Removing JWT just in case there is an invalid value
+                // Removing JWT just in case there is an invalid value - not needed?!
                 // sessionStorage.removeItem("JWT");
+                util.showError("Invalid username or password");
             }
         } else {
-            console.log("Invalid amount of characters")
-            // TODO: Display error
+            util.showError("Text fields cannot be empty");
         }
     });
 }
@@ -77,15 +77,19 @@ export async function Loginpage() {
 function MakeHeader(firstName, lastName) {
     let header = e.Header();
     let userinfo = e.UserInfo({firstName, lastName});
-    let overallXPButton = e.TabButton({name: "Overall XP"});
     let projectsButton = e.TabButton({name: "My Projects"});
+    let overallXPButton = e.TabButton({name: "Overall XP"});
     let auditsButton = e.TabButton({name: "Audits"});
 
+
     document.getElementById("root").insertAdjacentHTML("afterbegin", header);
-    document.getElementById("header").insertAdjacentHTML("beforeend", overallXPButton);
     document.getElementById("header").insertAdjacentHTML("beforeend", projectsButton);
+    document.getElementById("header").insertAdjacentHTML("beforeend", overallXPButton);
     document.getElementById("header").insertAdjacentHTML("beforeend", auditsButton);
     document.getElementById("header").insertAdjacentHTML("beforeend", userinfo);
+
+    // Make my projects active by default
+    document.getElementById("My Projects").classList.add("active");
 }
 
 export function OverallXp() {
