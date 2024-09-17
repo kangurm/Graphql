@@ -16,20 +16,18 @@ export async function Homepage() {
         lastName = user.data.user[0].lastName;
     }
 
-    console.log("user: ", user)
-    let header = e.Header();
-    let userinfo = e.UserInfo({firstName, lastName});
-    let overallXPButton = e.TabButton({name: "Overall XP"});
-    let projectsButton = e.TabButton({name: "My Projects"});
-    let auditsButton = e.TabButton({name: "Audits"});
+    MakeHeader(firstName, lastName);
 
-    document.getElementById("root").insertAdjacentHTML("afterbegin", header);
-    document.getElementById("header").insertAdjacentHTML("beforeend", overallXPButton);
-    document.getElementById("header").insertAdjacentHTML("beforeend", projectsButton);
-    document.getElementById("header").insertAdjacentHTML("beforeend", auditsButton);
-    document.getElementById("header").insertAdjacentHTML("beforeend", userinfo);
+    let mainContainer = e.MainContainer();
 
-    // document.getElementById("root").insertAdjacentHTML("afterbegin", template);
+    document.getElementById("root").insertAdjacentHTML("beforeend", mainContainer);
+
+    let graphContainer1 = e.GraphContainer();
+
+
+    document.getElementById("main_container").insertAdjacentHTML("beforeend", graphContainer1);
+
+
 
     document.getElementById("home").addEventListener("click", function () {
         util.clearContent();
@@ -69,6 +67,20 @@ export async function Loginpage() {
             // TODO: Display error
         }
     });
+}
+
+function MakeHeader(firstName, lastName) {
+    let header = e.Header();
+    let userinfo = e.UserInfo({firstName, lastName});
+    let overallXPButton = e.TabButton({name: "Overall XP"});
+    let projectsButton = e.TabButton({name: "My Projects"});
+    let auditsButton = e.TabButton({name: "Audits"});
+
+    document.getElementById("root").insertAdjacentHTML("afterbegin", header);
+    document.getElementById("header").insertAdjacentHTML("beforeend", overallXPButton);
+    document.getElementById("header").insertAdjacentHTML("beforeend", projectsButton);
+    document.getElementById("header").insertAdjacentHTML("beforeend", auditsButton);
+    document.getElementById("header").insertAdjacentHTML("beforeend", userinfo);
 }
 
 export function OverallXp() {

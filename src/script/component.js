@@ -42,3 +42,21 @@ export const Header = () => {
         `
     )
 };
+
+export const GraphContainer = () => {
+    return (
+        `
+        <div id="graph_container" class="graph_container">
+        </div>
+        `
+    )
+}
+
+export const MainContainer = () => {
+    return (
+        `
+        <div id="main_container">
+        </div>
+        `
+    )
+}

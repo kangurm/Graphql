@@ -2,7 +2,8 @@
     font-family: "Fira Code", "Fira Mono", "SF Mono", "Roboto Mono", monospace;
 }
 
-body, html {
+body,
+html {
     margin: 0;
     padding: 0;
     width: 100%;
@@ -16,7 +17,7 @@ body, html {
 
 #root {
     width: 100%;
-    height: 100%;
+    /* height: 100%; */
 }
 
 /* LOGIN PAGE CSS START */
@@ -66,7 +67,6 @@ body, html {
     width: 15%;
     height: 15%;
     border-radius: 15px;
-    padding: 10px;
     border: 2px solid #8f857d;
 
     color: #433633;
@@ -166,6 +166,40 @@ header {
 }
 
 /* HEADER CSS END */
+
+/* MAIN PAGE CSS START */
+
+@media screen and (max-width: 600px) {
+
+    #main_container {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+#main_container {
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.graph_container {
+    width: 50vw;
+    height: 70vh;
+    margin: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: #DECBB7;
+    border: 2px solid #8f857d;
+    border-radius: 25px;
+}
+
+/* MAIN PAGE CSS END */
 
 
 /* HOME PAGE CSS END */
