@@ -9,7 +9,6 @@ export async function Homepage() {
 
     let firstName;
     let lastName;
-    console.log("user: ", user)
     if (user.error === undefined) {
         firstName = user.data.user[0].firstName;
         lastName = user.data.user[0].lastName;
@@ -43,6 +42,8 @@ export async function Homepage() {
         util.logout();
         Loginpage();
     })
+
+    OverallXP();
 }
 
 
@@ -77,19 +78,19 @@ export async function Loginpage() {
 function MakeHeader(firstName, lastName) {
     let header = e.Header();
     let userinfo = e.UserInfo({ firstName, lastName });
-    let profileButton = e.TabButton({ name: "My Profile" });
+    // let profileButton = e.TabButton({ name: "My Profile" });
     let overallXPButton = e.TabButton({ name: "Overall XP" });
-    let auditsButton = e.TabButton({ name: "Audits" });
+    let auditsButton = e.TabButton({ name: "Audits Info" });
 
 
     document.getElementById("root").insertAdjacentHTML("afterbegin", header);
-    document.getElementById("header").insertAdjacentHTML("beforeend", profileButton);
+    // document.getElementById("header").insertAdjacentHTML("beforeend", profileButton);
     document.getElementById("header").insertAdjacentHTML("beforeend", overallXPButton);
     document.getElementById("header").insertAdjacentHTML("beforeend", auditsButton);
     document.getElementById("header").insertAdjacentHTML("beforeend", userinfo);
 
-    // Make "My Profile" active by default when Homepage() is called
-    document.getElementById("My Profile").classList.add("active");
+    // Make "Overall XP" active by default when Homepage() is called
+    document.getElementById("Overall XP").classList.add("active");
 }
 
 export async function OverallXP() {
@@ -157,11 +158,12 @@ export async function OverallXP() {
 
 }
 
-export async function MyProfile() {
-    const JWT_token = util.getTokenFromStorage();
-    const xpdata = await util.fetchData(query.ProjectsQuery, JWT_token);
+// Deprecated for now
+// export async function MyProfile() {
+//     const JWT_token = util.getTokenFromStorage();
+//     const xpdata = await util.fetchData(query.ProjectsQuery, JWT_token);
 
-}
+// }
 
 export async function Audits() {
     const JWT_token = util.getTokenFromStorage();

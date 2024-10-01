@@ -14,8 +14,8 @@ function InitWithToken() {
 
 window.changeTab = (event, name) => {
     setActiveTab(event.target);
-    // TODO: clear all graph containers and stats containers
     switch (name) {
+        // MyProfile deprecated
         case "My Profile":
             clearDataContainers();
             render.MyProfile();
@@ -24,7 +24,7 @@ window.changeTab = (event, name) => {
             clearDataContainers();
             render.OverallXP();
             break;
-        case "Audits":
+        case "Audits Info":
             clearDataContainers();
             render.Audits();
             break;
