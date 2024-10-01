@@ -1,6 +1,3 @@
-import { getUserIDFromStorage } from "./util.js";
-
-let user_id = getUserIDFromStorage();
 
 export const userQuery =
   `
@@ -29,22 +26,25 @@ export const ProjectsQuery =
 
 
 
-export const AuditsQuery =
-`query {
-downTransactions: transaction_aggregate( where: { userId: { _eq: ${user_id} }, type: { _eq: "down" } }) {
-  aggregate {
-      count
+export const AuditsQuery = (user_id) => {
+  return (
+  `query {
+  downTransactions: transaction_aggregate( where: { userId: { _eq: ${user_id} }, type: { _eq: "down" } }) {
+    aggregate {
+        count
+    }
   }
-}
-upTransactions: transaction_aggregate( where: { userId: { _eq: ${user_id} }, type: { _eq: "up" } }) {
-  aggregate {
-      count
+  upTransactions: transaction_aggregate( where: { userId: { _eq: ${user_id} }, type: { _eq: "up" } }) {
+    aggregate {
+        count
+    }
   }
+  user(where: { id: { _eq: ${user_id} } }) {
+    auditRatio
+  }
+  audit (where: { auditorId: { _eq: ${user_id} } }) {
+    grade
+  }
+  }`
+  )
 }
-user(where: { id: { _eq: ${user_id} } }) {
-  auditRatio
-}
-audit (where: { auditorId: { _eq: ${user_id} } }) {
-  grade
-}
-}`

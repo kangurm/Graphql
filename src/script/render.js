@@ -167,7 +167,8 @@ export async function OverallXP() {
 
 export async function Audits() {
     const JWT_token = util.getTokenFromStorage();
-    const auditsData = await util.fetchData(query.AuditsQuery, JWT_token);
+    const user_id = util.getUserIDFromStorage();
+    const auditsData = await util.fetchData(query.AuditsQuery(user_id), JWT_token);
 
 
     // Load the Visualization API and the corechart package.
