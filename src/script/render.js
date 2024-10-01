@@ -90,7 +90,36 @@ function MakeHeader(firstName, lastName) {
     document.getElementById("My Projects").classList.add("active");
 }
 
-export function OverallXP() {
+export async function OverallXP() {
+    const JWT_token = util.getTokenFromStorage();
+    const xpdata =  await util.fetchData(query.ProjectsQuery, JWT_token);
+
+    let xpTransactions = xpdata.data.transaction;
+    let xpTransactionsLength = xpTransactions.length;
+    let xpTransactionsList = [];
+    for (let i = 0; i < xpTransactionsLength; i++) {
+        xpTransactionsList.push([xpTransactions[i].object.name, xpTransactions[i].amount]);
+    }
+
+    xpTransactionsList.sort((a, b) => b[1] - a[1]);
+    xpTransactionsList.splice(5);
+
+    for (let i = 0; i < xpTransactionsList.length; i++) {
+        xpTransactionsList[i][1] = (xpTransactionsList[i][1] / 1000).toFixed(1) + "kB";
+    }
+
+    let totalXP = 0;
+    for (let i = 0; i < xpTransactionsLength; i++) {
+        totalXP += xpTransactions[i].amount;
+    }
+
+    totalXP = (totalXP / 1000).toFixed(2) + "kB";
+
+
+
+
+    console.log(xpdata);
+
     // Load the Visualization API and the corechart package.
     google.charts.load('current', {'packages':['corechart']});
 
@@ -122,14 +151,8 @@ export function OverallXP() {
         chart.draw(data, options);
       }
 
-      let projects = [
-        "Project 1",
-        "Project 2",
-        "Project 3"
-      ]
-
-      let statsContent1 = e.StatsContent("Overall XP", "100 XP", false);
-      let statsContent2 = e.StatsContent("Highest Rewarded Projects", projects, true);
+      let statsContent1 = e.StatsContent("Total XP", totalXP, false);
+      let statsContent2 = e.StatsContent("Highest Rewarded Projects", xpTransactionsList, true);
 
       document.getElementById("stats1").innerHTML = statsContent1;
       document.getElementById("stats2").innerHTML = statsContent2;

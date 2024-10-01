@@ -73,7 +73,7 @@ export const StatsContainer = () => {
     )
 }
 
-// Title, content and is list boolean
+// Title, content and list boolean
 export const StatsContent = (title, data, bList) => {
 
     if (bList && Array.isArray(data)) {
