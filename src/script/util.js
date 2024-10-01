@@ -29,6 +29,7 @@ export function setActiveTab(target) {
 
 export function logout() {
     sessionStorage.removeItem("JWT");
+    sessionStorage.removeItem("user_id");
     clearFromRoot();
 }
 

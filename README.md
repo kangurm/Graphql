@@ -4,9 +4,8 @@
 Simple web program to check your individual stats for the Kood/Johvi curriculum. <br>
 ### Features
 
-- **My Profile** - Interesting stats about your projects: string graph about time / project completion, stats about longest project development times and number of optional exercises done.
-- **Overall XP** - XP Related chart which divides all projects into a pie chart based on XP rewarded on it. Also contains stats about highest rewarded optional projects and XP rewarded by optional exercises.
-- **Audits** - Bar chart between audits given and audits received. Stats about how many fails and succeeds you have given other students.
+- **Overall XP** - XP Related chart which divides all projects into a pie chart based on XP rewarded on it. Also contains stats about highest rewarded projects and your total XP amount.
+- **Audits** - Bar chart between audits given and audits received. Stats about how many fails you have given others students and also your audit ratio.
 
 ## Running the app locally
 
@@ -26,13 +25,13 @@ kill id
 
 ## Accessing the app on the internet
 
-URL
+[Github]()
 
 ## Audit info
 
-- Audit guide
+[Audit Guide](https://01.kood.tech/git/root/public/src/branch/master/subjects/graphql/audit)
 
 ## About creator
 
-Repository link <br>
-Marcus Kangur (mkangur)
+[Repository link](https://01.kood.tech/git/mkangur/graphql) <br>
+Created by **Marcus Kangur (mkangur)**
