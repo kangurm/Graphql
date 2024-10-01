@@ -101,6 +101,8 @@ export async function OverallXP() {
         xpTransactionsList.push([xpTransactions[i].object.name, xpTransactions[i].amount]);
     }
 
+    const xpTransactionsListNumbers = JSON.parse(JSON.stringify(xpTransactionsList));
+
     xpTransactionsList.sort((a, b) => b[1] - a[1]);
     xpTransactionsList.splice(5);
 
@@ -130,18 +132,12 @@ export async function OverallXP() {
 
         // Create the data table.
         var data = new google.visualization.DataTable();
-        data.addColumn('string', 'Topping');
-        data.addColumn('number', 'Slices');
-        data.addRows([
-          ['Mushrooms', 3],
-          ['Onions', 1],
-          ['Olives', 1],
-          ['Zucchini', 1],
-          ['Pepperoni', 2]
-        ]);
+        data.addColumn('string', 'Project');
+        data.addColumn('number', 'XP');
+        data.addRows(xpTransactionsListNumbers);
 
         // Set chart options
-        var options = {'title':'How Much Pizza I Ate Last Night',
+        var options = {'title':'XP Rewards Based on Projects',
                        'width':1125,
                        'height':875,
                        'backgroundColor': 'transparent'};
