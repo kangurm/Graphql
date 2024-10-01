@@ -14,9 +14,6 @@ export async function Homepage() {
         lastName = user.data.user[0].lastName;
     } // Possibly add an else statement here to remove JWT if its unvalid and call InitWithToken() again?
 
-    let user_id = user.data.user[0].id;
-    sessionStorage.setItem("user_id", user_id);
-
     MakeHeader(firstName, lastName);
 
     let mainContainer = e.MainContainer();
@@ -167,7 +164,8 @@ export async function OverallXP() {
 
 export async function Audits() {
     const JWT_token = util.getTokenFromStorage();
-    const user_id = util.getUserIDFromStorage();
+    const user = await util.fetchData(query.userQuery, JWT_token);
+    let user_id = user.data.user[0].id;
     const auditsData = await util.fetchData(query.AuditsQuery(user_id), JWT_token);
 
 
