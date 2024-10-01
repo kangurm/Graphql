@@ -25,7 +25,7 @@ kill id
 
 ## Accessing the app on the internet
 
-[Github]()
+[Github](https://kangurm.github.io/)
 
 ## Audit info
 
@@ -33,5 +33,5 @@ kill id
 
 ## About creator
 
-[Repository link](https://01.kood.tech/git/mkangur/graphql) <br>
+[Gitea Repository link](https://01.kood.tech/git/mkangur/graphql) <br>
 Created by **Marcus Kangur (mkangur)**
