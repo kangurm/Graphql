@@ -4,6 +4,11 @@ export function getTokenFromStorage() {
     return JWT_token ? JWT_token : undefined
 }
 
+export function getUserIDFromStorage() {
+    const user_id = sessionStorage.getItem("user_id");
+    return user_id ? user_id : undefined
+}
+
 export function clearFromRoot() {
     document.getElementById("root").innerHTML = '';
 }

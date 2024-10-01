@@ -3,7 +3,6 @@ import * as e from './component.js';
 import * as util from './util.js';
 
 
-
 export async function Homepage() {
     const JWT_token = util.getTokenFromStorage();
     const user = await util.fetchData(query.userQuery, JWT_token);
@@ -15,6 +14,9 @@ export async function Homepage() {
         firstName = user.data.user[0].firstName;
         lastName = user.data.user[0].lastName;
     } // Possibly add an else statement here to remove JWT if its unvalid and call InitWithToken() again?
+
+    let user_id = user.data.user[0].id;
+    sessionStorage.setItem("user_id", user_id);
 
     MakeHeader(firstName, lastName);
 
@@ -165,7 +167,6 @@ export async function Audits() {
     const JWT_token = util.getTokenFromStorage();
     const auditsData = await util.fetchData(query.AuditsQuery, JWT_token);
 
-    console.log(auditsData);
 
     // Load the Visualization API and the corechart package.
     google.charts.load('current', { 'packages': ['corechart'] });
@@ -197,4 +198,21 @@ export async function Audits() {
         chart.draw(data, options);
     }
 
+    let auditRatio = auditsData.data.user[0].auditRatio.toFixed(2);
+
+    let audits = auditsData.data.audit
+
+    let failsGiven = 0;
+
+    audits.forEach(audit => {
+        if (audit.grade !== null && audit.grade < 1) {
+            failsGiven++;
+        }
+    })
+
+    let statsContent1 = e.StatsContent("Audit Ratio", auditRatio, false);
+    let statsContent2 = e.StatsContent("Failed Audits Given To Others", failsGiven, false);
+
+    document.getElementById("stats1").innerHTML = statsContent1;
+    document.getElementById("stats2").innerHTML = statsContent2;
 }
