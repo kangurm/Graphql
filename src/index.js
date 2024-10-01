@@ -1,5 +1,5 @@
 import * as render from './script/render.js';
-import { clearFromRoot, setActiveTab } from './script/util.js';
+import { clearDataContainers, setActiveTab } from './script/util.js';
 
 /* Initializes the app, when the player has an auth token saved in their browser session and will
 be logged in immediately. */
@@ -16,13 +16,16 @@ window.changeTab = (event, name) => {
     setActiveTab(event.target);
     // TODO: clear all graph containers and stats containers
     switch (name) {
-        case "Overall XP":
-            render.OverallXp();
-            break;
         case "My Projects":
+            clearDataContainers();
             render.MyProjects();
             break;
+        case "Overall XP":
+            clearDataContainers();
+            render.OverallXP();
+            break;
         case "Audits":
+            clearDataContainers();
             render.Audits();
             break;
         default:

@@ -65,7 +65,7 @@ export const MainContainer = () => {
 export const StatsContainer = () => {
     return (
         `
-        <div class="stats_container">
+        <div id="stats_container" class="stats_container">
         </div>
         `
     )

@@ -185,8 +185,8 @@ header {
 }
 
 .graph_container {
-    width: 50vw;
-    height: 70vh;
+    width: 900px;
+    height: 700px;
     margin: 20px;
     display: flex;
     flex-direction: row;
@@ -198,8 +198,8 @@ header {
 }
 
 .stats_container {
-    width: 25vw;
-    height: 70vh;
+    width: 900px;
+    height: 700px;
     margin: 20px;
     display: flex;
     flex-direction: row;
@@ -208,6 +208,13 @@ header {
     background-color: #DECBB7;
     border: 2px solid #8f857d;
     border-radius: 25px;
+}
+
+.stats {
+    display: flex;
+    flex-direction: column;
+    width: 700px;
+    height: 200px;
 }
 
 /* MAIN SECTION CSS END */

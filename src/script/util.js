@@ -8,6 +8,11 @@ export function clearFromRoot() {
     document.getElementById("root").innerHTML = '';
 }
 
+export function clearDataContainers() {
+    document.getElementById("graph_container").innerHTML = '';
+    document.getElementById("stats_container").innerHTML = '';
+}
+
 export function setActiveTab(target) {
     let buttons = document.getElementsByClassName("tab_button");
     for (let i = 0; i < buttons.length; i++) {
