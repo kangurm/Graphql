@@ -4,6 +4,7 @@ export const userQuery =
   user {
     firstName
     lastName
+    id
   }
 }
 `
@@ -35,4 +36,22 @@ export const ProjectsQuery =
       name
     }
   }
+}`
+
+export const AuditsQuery =
+`query {
+downTransactions: transaction_aggregate(
+  where: { userId: { _eq: 9041 }, type: { _eq: "down" } }
+) {
+  aggregate {
+      count
+  }
+}
+upTransactions: transaction_aggregate(
+  where: { userId: { _eq: 9041 }, type: { _eq: "up" } }
+) {
+  aggregate {
+      count
+  }
+}
 }`

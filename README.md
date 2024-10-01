@@ -4,7 +4,7 @@
 Simple web program to check your individual stats for the Kood/Johvi curriculum. <br>
 ### Features
 
-- **My Projects** - Interesting stats about your projects: string graph about time / project completion, stats about longest project development times and number of optional exercises done.
+- **My Profile** - Interesting stats about your projects: string graph about time / project completion, stats about longest project development times and number of optional exercises done.
 - **Overall XP** - XP Related chart which divides all projects into a pie chart based on XP rewarded on it. Also contains stats about highest rewarded optional projects and XP rewarded by optional exercises.
 - **Audits** - Bar chart between audits given and audits received. Stats about how many fails and succeeds you have given other students.
 

@@ -187,7 +187,7 @@ header {
 
 .graph_container {
     width: 1125px;
-    height: 875px;
+    height: 600px;
     margin: 20px;
     display: flex;
     flex-direction: row;
@@ -200,7 +200,7 @@ header {
 
 .stats_container {
     width: 500px;
-    height: 875px;
+    height: 600px;
     margin: 20px;
     display: flex;
     flex-direction: column;
@@ -210,7 +210,7 @@ header {
 }
 .stats {
     width: 100%;
-    min-height: 10%;
+    min-height: 100px;
     /* height: 100%; */
     margin: 20px;;
     background-color: #DECBB7;

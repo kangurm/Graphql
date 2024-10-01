@@ -16,9 +16,9 @@ window.changeTab = (event, name) => {
     setActiveTab(event.target);
     // TODO: clear all graph containers and stats containers
     switch (name) {
-        case "My Projects":
+        case "My Profile":
             clearDataContainers();
-            render.MyProjects();
+            render.MyProfile();
             break;
         case "Overall XP":
             clearDataContainers();

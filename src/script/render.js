@@ -6,7 +6,7 @@ import * as util from './util.js';
 
 export async function Homepage() {
     const JWT_token = util.getTokenFromStorage();
-    const user =  await util.fetchData(query.userQuery, JWT_token);
+    const user = await util.fetchData(query.userQuery, JWT_token);
 
     let firstName;
     let lastName;
@@ -74,25 +74,25 @@ export async function Loginpage() {
 
 function MakeHeader(firstName, lastName) {
     let header = e.Header();
-    let userinfo = e.UserInfo({firstName, lastName});
-    let projectsButton = e.TabButton({name: "My Projects"});
-    let overallXPButton = e.TabButton({name: "Overall XP"});
-    let auditsButton = e.TabButton({name: "Audits"});
+    let userinfo = e.UserInfo({ firstName, lastName });
+    let profileButton = e.TabButton({ name: "My Profile" });
+    let overallXPButton = e.TabButton({ name: "Overall XP" });
+    let auditsButton = e.TabButton({ name: "Audits" });
 
 
     document.getElementById("root").insertAdjacentHTML("afterbegin", header);
-    document.getElementById("header").insertAdjacentHTML("beforeend", projectsButton);
+    document.getElementById("header").insertAdjacentHTML("beforeend", profileButton);
     document.getElementById("header").insertAdjacentHTML("beforeend", overallXPButton);
     document.getElementById("header").insertAdjacentHTML("beforeend", auditsButton);
     document.getElementById("header").insertAdjacentHTML("beforeend", userinfo);
 
-    // Make "My Projects" active by default when Homepage() is called
-    document.getElementById("My Projects").classList.add("active");
+    // Make "My Profile" active by default when Homepage() is called
+    document.getElementById("My Profile").classList.add("active");
 }
 
 export async function OverallXP() {
     const JWT_token = util.getTokenFromStorage();
-    const xpdata =  await util.fetchData(query.ProjectsQuery, JWT_token);
+    const xpdata = await util.fetchData(query.ProjectsQuery, JWT_token);
 
     let xpTransactions = xpdata.data.transaction;
     let xpTransactionsLength = xpTransactions.length;
@@ -101,8 +101,10 @@ export async function OverallXP() {
         xpTransactionsList.push([xpTransactions[i].object.name, xpTransactions[i].amount]);
     }
 
+    // List for the graph
     const xpTransactionsListNumbers = JSON.parse(JSON.stringify(xpTransactionsList));
 
+    // Stats for the top 5 projects
     xpTransactionsList.sort((a, b) => b[1] - a[1]);
     xpTransactionsList.splice(5);
 
@@ -110,6 +112,7 @@ export async function OverallXP() {
         xpTransactionsList[i][1] = (xpTransactionsList[i][1] / 1000).toFixed(1) + "kB";
     }
 
+    // Stats for the Total XP amount
     let totalXP = 0;
     for (let i = 0; i < xpTransactionsLength; i++) {
         totalXP += xpTransactions[i].amount;
@@ -117,13 +120,8 @@ export async function OverallXP() {
 
     totalXP = (totalXP / 1000).toFixed(2) + "kB";
 
-
-
-
-    console.log(xpdata);
-
     // Load the Visualization API and the corechart package.
-    google.charts.load('current', {'packages':['corechart']});
+    google.charts.load('current', { 'packages': ['corechart'] });
 
     // Set a callback to run when the Google Visualization API is loaded.
     google.charts.setOnLoadCallback(drawChart);
@@ -137,30 +135,66 @@ export async function OverallXP() {
         data.addRows(xpTransactionsListNumbers);
 
         // Set chart options
-        var options = {'title':'XP Rewards Based on Projects',
-                       'width':1125,
-                       'height':875,
-                       'backgroundColor': 'transparent'};
+        var options = {
+            'title': 'XP Rewards Based on Projects',
+            'width': 1125,
+            'height': 600,
+            'backgroundColor': 'transparent'
+        };
 
         // Instantiate and draw our chart, passing in some options.
         var chart = new google.visualization.PieChart(document.getElementById('graph_container'));
         chart.draw(data, options);
-      }
+    }
 
-      let statsContent1 = e.StatsContent("Total XP", totalXP, false);
-      let statsContent2 = e.StatsContent("Highest Rewarded Projects", xpTransactionsList, true);
+    let statsContent1 = e.StatsContent("Total XP", totalXP, false);
+    let statsContent2 = e.StatsContent("Highest Rewarded Projects", xpTransactionsList, true);
 
-      document.getElementById("stats1").innerHTML = statsContent1;
-      document.getElementById("stats2").innerHTML = statsContent2;
-
-}
-
-export function MyProjects() {
-    console.log('rendering my projects')
+    document.getElementById("stats1").innerHTML = statsContent1;
+    document.getElementById("stats2").innerHTML = statsContent2;
 
 }
 
-export function Audits() {
-    console.log('rendering audits')
+export async function MyProfile() {
+    const JWT_token = util.getTokenFromStorage();
+    const xpdata = await util.fetchData(query.ProjectsQuery, JWT_token);
+
+}
+
+export async function Audits() {
+    const JWT_token = util.getTokenFromStorage();
+    const auditsData = await util.fetchData(query.AuditsQuery, JWT_token);
+
+    console.log(auditsData);
+
+    // Load the Visualization API and the corechart package.
+    google.charts.load('current', { 'packages': ['corechart'] });
+
+    // Set a callback to run when the Google Visualization API is loaded.
+    google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+
+        // Create the data table.
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Audits');
+        data.addColumn('number', 'Amount');
+        data.addRows([
+            ['Given', auditsData.data.upTransactions.aggregate.count],
+            ['Received', auditsData.data.downTransactions.aggregate.count],
+        ]);
+
+        // Set chart options
+        var options = {
+            'title': 'Audits Given VS Audits Received',
+            'width': 1125,
+            'height': 600,
+            'backgroundColor': 'transparent'
+        };
+
+        // Instantiate and draw our chart, passing in some options.
+        var chart = new google.visualization.BarChart(document.getElementById('graph_container'));
+        chart.draw(data, options);
+    }
 
 }
