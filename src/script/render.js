@@ -23,14 +23,12 @@ export async function Homepage() {
     document.getElementById("root").insertAdjacentHTML("beforeend", mainContainer);
 
     let graphContainer1 = e.GraphContainer();
-    let StatsContainer1 = e.StatsContainer();
-    let StatsContainer2 = e.StatsContainer();
+    let statsContainer1 = e.StatsContainer();
 
 
 
     document.getElementById("main_container").insertAdjacentHTML("beforeend", graphContainer1);
-    document.getElementById("main_container").insertAdjacentHTML("beforeend", StatsContainer1);
-    document.getElementById("main_container").insertAdjacentHTML("beforeend", StatsContainer2);
+    document.getElementById("main_container").insertAdjacentHTML("beforeend", statsContainer1);
 
 
 
@@ -115,14 +113,26 @@ export function OverallXP() {
 
         // Set chart options
         var options = {'title':'How Much Pizza I Ate Last Night',
-                       'width':800,
-                       'height':600,
+                       'width':1125,
+                       'height':875,
                        'backgroundColor': 'transparent'};
 
         // Instantiate and draw our chart, passing in some options.
         var chart = new google.visualization.PieChart(document.getElementById('graph_container'));
         chart.draw(data, options);
       }
+
+      let projects = [
+        "Project 1",
+        "Project 2",
+        "Project 3"
+      ]
+
+      let statsContent1 = e.StatsContent("Overall XP", "100 XP", false);
+      let statsContent2 = e.StatsContent("Highest Rewarded Projects", projects, true);
+
+      document.getElementById("stats1").innerHTML = statsContent1;
+      document.getElementById("stats2").innerHTML = statsContent2;
 
 }
 

@@ -66,7 +66,39 @@ export const StatsContainer = () => {
     return (
         `
         <div id="stats_container" class="stats_container">
+            <div id="stats1" class="stats"></div>
+            <div id="stats2" class="stats"></div>
         </div>
         `
     )
+}
+
+// Title, content and is list boolean
+export const StatsContent = (title, data, bList) => {
+
+    if (bList && Array.isArray(data)) {
+        let s = '';
+        for (let i = 0; i < data.length; i++) {
+            s += `<li>${data[i]}</li>`;
+        }
+        return (
+            `
+            <div class="stats_content">
+                <h3 class="stats_title">${title}</h3>
+                <ul class="stats_data">
+                    ${s}
+                </ul>
+            </div>
+            `
+        )
+    } else {
+        return (
+            `
+            <div class="stats_content">
+                <h3 class="stats_title">${title}</h3>
+                <p class="stats_data">${data}</p>
+            </div>
+            `
+        )
+    }
 }

@@ -10,7 +10,8 @@ export function clearFromRoot() {
 
 export function clearDataContainers() {
     document.getElementById("graph_container").innerHTML = '';
-    document.getElementById("stats_container").innerHTML = '';
+    document.getElementById("stats1").innerHTML = '';
+    document.getElementById("stats2").innerHTML = '';
 }
 
 export function setActiveTab(target) {

@@ -182,11 +182,12 @@ header {
     width: 100%;
     display: flex;
     flex-direction: row;
+    justify-content: center;
 }
 
 .graph_container {
-    width: 900px;
-    height: 700px;
+    width: 1125px;
+    height: 875px;
     margin: 20px;
     display: flex;
     flex-direction: row;
@@ -198,23 +199,35 @@ header {
 }
 
 .stats_container {
-    width: 900px;
-    height: 700px;
+    width: 500px;
+    height: 875px;
     margin: 20px;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+
+}
+.stats {
+    width: 100%;
+    /* height: 100%; */
+    margin: 20px;;
     background-color: #DECBB7;
     border: 2px solid #8f857d;
     border-radius: 25px;
 }
+.stats_content {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    font-size: larger;
+}
+.stats_title {
 
-.stats {
-    display: flex;
-    flex-direction: column;
-    width: 700px;
-    height: 200px;
+}
+.stats_data {
+    list-style-position: inside;
+    padding: 5px;
 }
 
 /* MAIN SECTION CSS END */
